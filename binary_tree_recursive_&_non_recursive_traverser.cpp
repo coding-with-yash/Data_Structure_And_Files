@@ -38,7 +38,7 @@ class btree
     void display_non_recusive();
     void non_recursive_inorder(node *);
     void non_recursive_preorder(node *);
-    // void non_recursive_postorder(node *);
+    void non_recursive_postorder(node *);
 };
 
 // Create Tree
@@ -243,10 +243,10 @@ void btree::display_non_recusive()
                  cout<<"\n Non Recursive Pre-Order Tree is = ";
                  preorder(root);
                 break;
-            // case 3:
-            //      cout<<"\n Non Recursive Post-Order Tree is = ";
-            //      postorder(root);
-            //     break;
+            case 3:
+                 cout<<"\n Non Recursive Post-Order Tree is = ";
+                 postorder(root);
+                break;
             default:
             cout<<"Wrong Choice "<<endl;
         }
@@ -291,6 +291,29 @@ void btree::non_recursive_preorder(node *root)
     }
 
 }
+
+void btree::non_recursive_postorder(node *root) 
+ { 
+ btree s; 
+ int i=0; 
+ int str[20]; 
+        
+        while(!s.isempty()|| root!=NULL) 
+        { 
+            while(root!=NULL) 
+            { 
+                str[i++]=root->data; 
+                s.push(root); 
+                root=root->right; 
+            } 
+        root=s.pop(); 
+        root=root->left; 
+        } 
+    
+        while(--i>=0) 
+            cout<<str[i]<<" "; 
+ } 
+
 
 
 
